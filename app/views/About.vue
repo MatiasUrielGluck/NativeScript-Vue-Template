@@ -27,7 +27,6 @@ export default {
 
   methods: {
     onHome() {
-      this.$store.dispatch("incrementAsync", { time: 3000 });
       this.$router.goto("/home");
     },
   },
