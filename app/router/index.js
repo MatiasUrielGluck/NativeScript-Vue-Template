@@ -8,7 +8,13 @@ class Router {
     this.actualRoute = routerConfig.startingRoute;
   }
 
-  goto(to) {
+  /**
+   *
+   * @param {String} to Desired route path
+   * @param {Object} options Options
+   * @returns
+   */
+  goto(to, { transition = "slideLeft", props } = {}) {
     if (!routes[to]) {
       console.log(`Router: The route ${to} doesn't exist.`);
       return;
@@ -16,7 +22,10 @@ class Router {
 
     console.log(`Going from '${this.actualRoute}' to '${to}'`);
     this.actualRoute = to;
-    Vue.navigateTo(routes[to]);
+    Vue.navigateTo(routes[to], {
+      transition,
+      props,
+    });
   }
 }
 

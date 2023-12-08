@@ -11,6 +11,11 @@
           <Span :text="message" />
         </FormattedString>
       </Label>
+      <Label class="info">
+        <FormattedString>
+          <Span class="fas" :text="title" />
+        </FormattedString>
+      </Label>
 
       <Button text="Go home" @tap="onHome" />
     </FlexboxLayout>
@@ -19,6 +24,13 @@
 
 <script>
 export default {
+  props: {
+    title: {
+      type: String,
+      default: "Title",
+    },
+  },
+
   computed: {
     message() {
       return `About page`;

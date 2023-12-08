@@ -55,7 +55,12 @@ export default {
     },
 
     onAbout() {
-      this.$router.goto("/about");
+      this.$router.goto("/about", {
+        transition: "slideTop",
+        props: {
+          title: "Who we are",
+        },
+      });
     },
   },
 };
