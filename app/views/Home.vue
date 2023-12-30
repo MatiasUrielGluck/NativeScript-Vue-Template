@@ -1,34 +1,36 @@
 <template>
-  <Page @loaded="onLoad">
-    <ActionBar>
-      <Label text="Home" />
-    </ActionBar>
+  <Page actionBarHidden="true" @loaded="onLoad">
+    <RootLayout>
+      <FlexboxLayout
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Label class="info" @tap="onIncrement">
+          <FormattedString>
+            <Span class="fas" text.decode="&#xf135; " />
+            <Span :text="message" />
+          </FormattedString>
+        </Label>
 
-    <FlexboxLayout
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Label class="info" @tap="onIncrement">
-        <FormattedString>
-          <Span class="fas" text.decode="&#xf135; " />
-          <Span :text="message" />
-        </FormattedString>
-      </Label>
+        <Button text="Load pokemons" class="btn" @tap="onLoadPokemons" />
 
-      <Button text="Load pokemons" class="btn" @tap="onLoadPokemons" />
+        <Button
+          text="About"
+          class="btn"
+          @tap="onAbout"
+          :isEnabled="hasPokemons"
+        />
 
-      <Button
-        text="About"
-        class="btn"
-        @tap="onAbout"
-        :isEnabled="hasPokemons"
-      />
-    </FlexboxLayout>
+        <Button text="Open modal" class="btn" @tap="openModal" />
+      </FlexboxLayout>
+    </RootLayout>
   </Page>
 </template>
 
 <script>
+import BaseModal from "~/components/common/BaseModal.vue";
+
 export default {
   computed: {
     message() {
@@ -61,6 +63,9 @@ export default {
           title: "Who we are",
         },
       });
+    },
+    openModal() {
+      this.$rootLayoutController.openLayer(BaseModal);
     },
   },
 };
