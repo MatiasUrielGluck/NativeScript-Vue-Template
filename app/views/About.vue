@@ -9,12 +9,7 @@
         <Label class="info">
           <FormattedString>
             <Span class="fas" text.decode="&#xf135; " />
-            <Span :text="message" />
-          </FormattedString>
-        </Label>
-        <Label class="info">
-          <FormattedString>
-            <Span class="fas" :text="title" />
+            <Span text="About page" />
           </FormattedString>
         </Label>
 
@@ -29,19 +24,6 @@
 import BaseModal from "~/components/common/BaseModal.vue";
 
 export default {
-  props: {
-    title: {
-      type: String,
-      default: "Title",
-    },
-  },
-
-  computed: {
-    message() {
-      return `About page`;
-    },
-  },
-
   methods: {
     onHome() {
       this.$router.goto("/home");
