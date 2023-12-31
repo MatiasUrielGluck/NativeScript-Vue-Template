@@ -22,7 +22,6 @@
           :isEnabled="hasPokemons"
         />
 
-        <Button text="Open modal" class="btn" @tap="openModal" />
         <Button
           text="LocalStorage Test"
           class="btn"
@@ -34,8 +33,6 @@
 </template>
 
 <script>
-import BaseModal from "~/components/common/BaseModal.vue";
-
 export default {
   data: {
     usernameTxt: "",
@@ -76,9 +73,6 @@ export default {
           title: "Who we are",
         },
       });
-    },
-    openModal() {
-      this.$rootLayoutController.openLayer(BaseModal);
     },
     setName() {
       this.$localStorage.setItem("username", this.usernameTxt);
