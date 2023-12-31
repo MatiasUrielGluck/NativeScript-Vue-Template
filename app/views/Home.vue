@@ -23,6 +23,11 @@
         />
 
         <Button text="Open modal" class="btn" @tap="openModal" />
+        <Button
+          text="LocalStorage Test"
+          class="btn"
+          @tap="$router.goto('/localStorageTest')"
+        />
       </FlexboxLayout>
     </RootLayout>
   </Page>
@@ -32,6 +37,10 @@
 import BaseModal from "~/components/common/BaseModal.vue";
 
 export default {
+  data: {
+    usernameTxt: "",
+  },
+
   computed: {
     message() {
       return `Counter is ${this.$store.state.count}`;
@@ -39,6 +48,10 @@ export default {
 
     hasPokemons() {
       return this.$store.state.pokemons.length > 0;
+    },
+
+    hasUsername() {
+      return this.$localStorage.getItem("username") !== undefined;
     },
   },
 
@@ -66,6 +79,9 @@ export default {
     },
     openModal() {
       this.$rootLayoutController.openLayer(BaseModal);
+    },
+    setName() {
+      this.$localStorage.setItem("username", this.usernameTxt);
     },
   },
 };

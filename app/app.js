@@ -7,6 +7,7 @@ import Home from "./views/Home";
 
 import Router from "./router";
 import { RootLayoutController } from "./models/RootLayoutController";
+import { LocalStorage } from "./models/LocalStorage";
 
 Vue.use(Vuex);
 
@@ -15,6 +16,7 @@ const router = new Router();
 Vue.prototype.$router = router;
 
 Vue.prototype.$rootLayoutController = RootLayoutController.getInstance();
+Vue.prototype.$localStorage = LocalStorage.getInstance();
 
 new Vue({
   store,
