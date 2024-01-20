@@ -52,9 +52,9 @@ export class RootLayoutController {
     return this.instancedLayers.find((c) => c.component === component);
   }
 
-  openLayer(component, options) {
+  async openLayer(component, options) {
     try {
-      getRootLayout().open(this.getComponentInstance(component, options).view, {
+      await getRootLayout().open(this.getComponentInstance(component, options).view, {
         shadeCover: {
           color: "#000",
           opacity: 0.7,
@@ -78,7 +78,7 @@ export class RootLayoutController {
     }
   }
 
-  closeLayer(view = null) {
+  async closeLayer(view = null) {
     try {
       let instanceToDelete;
 
@@ -88,7 +88,7 @@ export class RootLayoutController {
         instanceToDelete = this.instancedLayers.pop();
       }
 
-      getRootLayout().close(instanceToDelete.view, {
+      await getRootLayout().close(instanceToDelete.view, {
         opacity: 0,
         translateY: 500,
         duration: 200,
