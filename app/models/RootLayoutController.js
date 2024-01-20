@@ -54,25 +54,28 @@ export class RootLayoutController {
 
   async openLayer(component, options) {
     try {
-      await getRootLayout().open(this.getComponentInstance(component, options).view, {
-        shadeCover: {
-          color: "#000",
-          opacity: 0.7,
-          tapToClose: true,
-        },
-        animation: {
-          enterFrom: {
-            opacity: 0,
-            translateY: 500,
-            duration: 200,
+      await getRootLayout().open(
+        this.getComponentInstance(component, options).view,
+        {
+          shadeCover: {
+            color: "#000",
+            opacity: 0.7,
+            tapToClose: true,
           },
-          exitTo: {
-            opacity: 0,
-            translateY: 500,
-            duration: 200,
+          animation: {
+            enterFrom: {
+              opacity: 0,
+              translateY: 500,
+              duration: 200,
+            },
+            exitTo: {
+              opacity: 0,
+              translateY: 500,
+              duration: 200,
+            },
           },
-        },
-      });
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +103,8 @@ export class RootLayoutController {
         );
       instanceToDelete.instance.$destroy();
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      await getRootLayout().closeAll();
     }
   }
 }
