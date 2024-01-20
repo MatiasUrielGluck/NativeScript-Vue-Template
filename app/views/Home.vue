@@ -58,7 +58,7 @@ export default {
     },
 
     onLoadPokemons() {
-      if (this.$store.state.pokemons.length > 0) return;
+      if (this.$store.state.pokemons?.length > 0) return;
       this.$store.dispatch("fetchAllPokemons");
     },
 
