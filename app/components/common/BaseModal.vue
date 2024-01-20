@@ -12,6 +12,11 @@
 </template>
 
 <script>
+import {
+  disableBackNavigation,
+  enableBackNavigation,
+} from "~/helpers/backNavigation";
+
 export default {
   name: "BaseModal",
   methods: {
@@ -19,6 +24,16 @@ export default {
       // this.$rootLayoutController.closeLayer(this.$el.nativeView); // this.$el.nativeView indicates the layer to close
       this.$rootLayoutController.closeLayer(); // closes the last layer
     },
+  },
+
+  mounted() {
+    disableBackNavigation(() => {
+      this.$rootLayoutController.closeLayer();
+    });
+  },
+
+  beforeDestroy() {
+    enableBackNavigation();
   },
 };
 </script>
