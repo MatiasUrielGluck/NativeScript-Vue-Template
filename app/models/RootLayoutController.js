@@ -57,11 +57,6 @@ export class RootLayoutController {
       await getRootLayout().open(
         this.getComponentInstance(component, options).view,
         {
-          shadeCover: {
-            color: "#000",
-            opacity: 0.7,
-            tapToClose: true,
-          },
           animation: {
             enterFrom: {
               opacity: 0,

@@ -23,6 +23,12 @@
         />
 
         <Button
+          text="Open modal"
+          class="btn"
+          @tap="openModal"
+        />
+
+        <Button
           text="LocalStorage Test"
           class="btn"
           @tap="$router.goto('/localStorageTest')"
@@ -33,6 +39,8 @@
 </template>
 
 <script>
+import BaseModal from '~/components/common/BaseModal.vue';
+
 export default {
   data: {
     usernameTxt: "",
@@ -77,6 +85,10 @@ export default {
     setName() {
       this.$localStorage.setItem("username", this.usernameTxt);
     },
+
+    async openModal() {
+      await this.$rootLayoutController.openLayer(BaseModal)
+    }
   },
 };
 </script>
